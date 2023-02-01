@@ -2,9 +2,12 @@
   "name": "Stable Diffusion 1.5 (AUTOMATIC1111)",
   "category": "Computer Vision",
   "example_input": {
-    "prompt": "an astronaut riding a horde on the moon",
-    "seed": 392030,
-    "guidance_scale": 7.5
+    "endpoint": "txt2img",
+    "params": {
+      "prompt": "an astronaut riding a (horse:motorcycle:0.5) on the moon",
+      "cfg_scale": 7.5,
+      "steps": 25
+    }
   },
   "example_output": {
     "image_base64": "<base64 output>"
