@@ -26,4 +26,4 @@ ADD script.py scripts/banana/scripts/banana.py
 ADD app.py app.py
 ADD server.py server.py
 
-CMD ["python", "server.py", "--xformers"]
+CMD ["python", "server.py", "--xformers", "--listen", "--port", "8000"]
