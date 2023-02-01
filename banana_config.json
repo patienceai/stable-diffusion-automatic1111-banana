@@ -1,0 +1,13 @@
+{
+  "name": "Stable Diffusion 1.5 (AUTOMATIC1111)",
+  "category": "Computer Vision",
+  "example_input": {
+    "prompt": "an astronaut riding a horde on the moon",
+    "seed": 392030,
+    "guidance_scale": 7.5
+  },
+  "example_output": {
+    "image_base64": "<base64 output>"
+  },
+  "version": "1"
+}
