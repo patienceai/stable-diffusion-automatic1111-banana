@@ -21,9 +21,9 @@ RUN python prepare.py --skip-torch-cuda-test --xformers --reinstall-torch --rein
 ADD download.py download.py
 RUN python download.py --use-cpu=all
 
-RUN mkdir -p scripts/banana/scripts
-ADD script.py scripts/banana/scripts/banana.py
+RUN mkdir -p extensions/banana/scripts
+ADD script.py extensions/banana/scripts/banana.py
 ADD app.py app.py
 ADD server.py server.py
 
-CMD ["python", "server.py", "--xformers", "--disable-safe-unpickle", "--port", "8000"]
+CMD ["python", "server.py", "--xformers", "--disable-safe-unpickle", "--listen", "--port", "8000"]
