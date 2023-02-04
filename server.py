@@ -2,5 +2,7 @@ import webui
 import app as user_src
 
 user_src.init()
+user_src.apply_weights()
 
-webui.api_only()
+if __name__ == '__main__':
+    webui.api_only()

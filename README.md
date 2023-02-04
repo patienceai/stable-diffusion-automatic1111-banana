@@ -11,6 +11,7 @@ Supports features not available in other Stable Diffusion templates, such as:
 Please note that this deployment provides an API only and does not include the WebUI's user interface.
 
 ## Instant Deploy
+
 [See how to deploy in seconds](https://app.banana.dev/templates/patienceai/stable-diffusion-1.5-automatic1111).
 
 ## Model Inputs
@@ -28,9 +29,64 @@ Please note that this deployment provides an API only and does not include the W
 }
 ```
 
+Output:
+
+```
+{
+  "images": [
+    "<base64 image>"
+  ]
+}
+```
+
+### img2img example
+
+```
+{
+  "endpoint": "img2img",
+  "params": {
+    "prompt": "an astronaut riding a horse on the moon in anime style",
+    "cfg_scale": 7.5,
+    "steps": 25,
+    "init_images": [
+        "<base64 image>"
+    ]
+  }
+}
+```
+
+Output:
+
+```
+{
+  "images": [
+    "<base64 image>"
+  ]
+}
+```
+
+### Interrogation example
+
+```
+{
+  "endpoint": "interrogate",
+  "params": {
+    "image": "<base64 image>"
+  }
+}
+```
+
+Output:
+
+```
+{
+  "caption": "<interrogate result>"
+}
+```
+
 ### Other endpoints
 
-Supported endpoints include `txt2img`, `img2img`, and more. For full documentation of available endpoints and their parameters, run a local copy of the Stable Diffusion WebUI and visit http://localhost:7860/docs. Not all endpoints have been tested with this banana deployment. Please report any issues you encounter.
+For full documentation of available endpoints and their parameters, run a local copy of the Stable Diffusion WebUI and visit http://localhost:7860/docs. Not all endpoints have been tested with this banana deployment. Please report any issues you encounter.
 
 Model inputs should be in the following format:
 
