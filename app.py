@@ -1,7 +1,6 @@
 import torch
 import modules.safe as safe
 import modules.shared as shared
-import modules.sd_hijack as sd_hijack
 import modules.sd_models
 from modules.timer import Timer
 
