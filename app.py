@@ -26,7 +26,7 @@ def noop(*args, **kwargs):
 #    modules.sd_models.load_model()
 #    return shared.sd_model
 
-def register_model()
+def register_model():
     global model
     from modules import shared, sd_hijack
     shared.sd_model = model
