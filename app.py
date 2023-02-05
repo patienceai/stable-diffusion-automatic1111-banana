@@ -1,10 +1,9 @@
 import torch
 import modules.safe as safe
 import modules.shared as shared
-import modules.sd_hijack as sd_hijack
 import modules.sd_models
+
 from modules.timer import Timer
-from modules import sd_hijack
 import dill
 
 original_save = torch.save
@@ -31,6 +30,7 @@ def load_model():
     return shared.sd_model
 
 def init():
+    from modules import sd_hijack
     global model
     shared.cmd_opts.no_hashing = True
     modules.sd_models.list_models()
