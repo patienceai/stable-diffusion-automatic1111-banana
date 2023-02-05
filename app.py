@@ -2,7 +2,7 @@ import torch
 import modules.safe as safe
 #from modules.timer import Timer
 import dill
-
+"""
 original_save = torch.save
 original_load = safe.unsafe_torch_load
 
@@ -16,7 +16,7 @@ def load(*args, **kwargs):
 
 torch.save = save
 torch.load = load
-
+"""
 device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
 
 def noop(*args, **kwargs):
