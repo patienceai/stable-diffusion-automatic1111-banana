@@ -5,8 +5,22 @@ import modules.sd_hijack as sd_hijack
 import modules.sd_models
 from modules.timer import Timer
 from modules import sd_hijack
+import dill
 
-torch.load = safe.unsafe_torch_load
+original_save = torch.save
+original_load = safe.unsafe_torch_load
+
+def save(*args, **kwargs):
+    kwargs['pickle_module'] = dill
+    return original_save(*args, **kwargs)
+
+def load(*args, **kwargs):
+    kwargs['pickle_module'] = dill
+    return original_load(*args, **kwargs)
+
+torch.save = save
+torch.load = load
+
 device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
 
 def noop(*args, **kwargs):
