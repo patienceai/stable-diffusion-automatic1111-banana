@@ -6,13 +6,14 @@ RUN apt update && apt-get -y install git wget \
 RUN ln -s /usr/bin/python3.10 /usr/bin/python
 
 RUN useradd -ms /bin/bash banana
-USER banana
-WORKDIR /home/banana
+#USER banana
+#WORKDIR /home/banana
+WORKDIR /app
 
 RUN git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git && \
     cd stable-diffusion-webui && \
     git checkout 3e0f9a75438fa815429b5530261bcf7d80f3f101
-WORKDIR /home/banana/stable-diffusion-webui
+WORKDIR /app/stable-diffusion-webui
 
 #RUN wget -O models/Stable-diffusion/model.safetensors 'https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.safetensors'
 RUN wget -O models/Stable-diffusion/model.ckpt 'https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.ckpt'
