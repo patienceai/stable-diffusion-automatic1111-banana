@@ -40,4 +40,4 @@ def init():
     model = modules.sd_models.load_model()
     modules.sd_models.load_model = noop
     register_model()
-    
+   
