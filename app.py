@@ -29,9 +29,12 @@ def noop(*args, **kwargs):
 
 def register_model():
     global model
-    from modules import shared, sd_hijack
-    shared.sd_model = model
-    sd_hijack.model_hijack.hijack(model)
+    try:
+        from modules import shared, sd_hijack
+        shared.sd_model = model
+        sd_hijack.model_hijack.hijack(model)
+    except:
+        print("Failed to hijack model.")
 
 def init():
     global model
