@@ -6,8 +6,6 @@ RUN apt update && apt-get -y install git wget \
 RUN ln -s /usr/bin/python3.10 /usr/bin/python
 
 RUN useradd -ms /bin/bash banana
-#USER banana
-#WORKDIR /home/banana
 WORKDIR /app
 
 RUN git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git && \
@@ -31,4 +29,4 @@ ADD script.py extensions/banana/scripts/banana.py
 ADD app.py app.py
 ADD server.py server.py
 
-CMD ["python", "-X", "importtime", "server.py", "--xformers", "--disable-safe-unpickle", "--lowram", "--no-half", "--no-hashing", "--listen", "--port", "8000"]
+CMD ["python", "server.py", "--xformers", "--disable-safe-unpickle", "--lowram", "--no-half", "--no-hashing", "--listen", "--port", "8000"]
