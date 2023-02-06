@@ -18,14 +18,26 @@ async def inference(request: Request):
     global client
     body = await request.body()
     model_input = json.loads(body)
+    
     params = None
+    mode = 'default'
+
     if 'endpoint' in model_input:
         endpoint = model_input['endpoint']
         if 'params' in model_input:
             params = model_input['params']
     else:
+        mode = 'banana_compat'
         endpoint = 'txt2img'
         params = model_input
+
+    if endpoint == 'txt2img':
+        if 'num_inference_steps' in params:
+            params['steps'] = params['num_inference_steps']
+            del params['num_inference_steps']
+        if 'guidance_scale' in params:
+            params['cfg_scale'] = params['guidance_scale']
+            del params['guidance_scale']
 
     if params is not None:
         response = client.post('/sdapi/v1/' + endpoint, json = params)
@@ -33,6 +45,12 @@ async def inference(request: Request):
         response = client.get('/sdapi/v1/' + endpoint)
 
     output = response.json()
+
+    if mode == 'banana_compat' and 'images' in output:
+        output = {
+            "base64_output": output["images"][0]
+        }   
+
     return output
 
 def register_endpoints(block, app):
