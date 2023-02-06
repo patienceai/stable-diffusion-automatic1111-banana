@@ -1,6 +1,7 @@
 import torch
 import modules.safe as safe
 #from modules.timer import Timer
+import webui
 import dill
 """
 original_save = torch.save
